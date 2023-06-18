@@ -10,15 +10,12 @@ Topics to be covered
 */
 #include <stdio.h>
 
-void printExponent(double num) {
-    unsigned long long *ptr = (unsigned long long *)&num;  // Treat the double variable as an unsigned long long pointer
-
-    unsigned long long exponent = (*ptr >> 52) & 0x7FF;  // Extract the exponent bits using bitwise operations
-
+void Exponent(double num) {
+    unsigned long long *ptr = (unsigned long long *)&num;  
+    unsigned long long exponent = (*ptr >> 52) & 0x7FF;  
     printf("Exponent in hexadecimal: 0x%llx\n", exponent);
     printf("Exponent in binary: 0b");
     
-    // Print the exponent bits in binary format
     for (int i = 10; i >= 0; i--) {
         unsigned long long bit = (exponent >> i) & 1;
         printf("%llu", bit);
@@ -29,7 +26,7 @@ void printExponent(double num) {
 
 int main() {
     double x = 0.7;
-    printExponent(x);
+    Exponent(x);
 
     return 0;
 }
